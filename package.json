@@ -2,11 +2,11 @@
   "name": "trinh-clothes",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
-  "type": "module",
+  "main": "dist/app.js",
   "scripts": {
     "compile": "tsc",
-    "start": "pnpm run compile && node ./dist/app.js"
+    "dev": "nodemon --exec ts-node src/app.ts",
+    "prod": "node dist/app.js"
   },
   "keywords": [],
   "author": "",
@@ -14,12 +14,12 @@
   "devDependencies": {
     "@types/node": "^20.4.1",
     "ts-node": "^10.9.1",
-    "ts-node-dev": "^2.0.0",
     "typescript": "^5.1.6"
   },
   "dependencies": {
     "@apollo/server": "^4.7.5",
     "apollo": "^2.34.0",
-    "graphql": "^16.7.1"
-   }
+    "graphql": "^16.7.1",
+    "nodemon": "^3.0.1"
+  }
 }
