@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    
-    environment {
-        // Define any environment variables you may need
-    }
 
     stages {
         stage('Packaging/Pushing imagae') {
@@ -33,14 +29,6 @@ pipeline {
             // Clean up any temporary files or resources if needed
             sh 'echo "Cleaning up..."'
             cleanWs()
-        }
-        success {
-            // Actions to perform when the build is successful (optional)
-            // For example, you can send notifications or trigger downstream jobs
-        }
-        failure {
-            // Actions to perform when the build fails (optional)
-            // For example, you can send notifications or handle errors
         }
     }
 }
