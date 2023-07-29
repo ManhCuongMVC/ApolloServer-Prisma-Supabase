@@ -2,16 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Packaging/Pushing imagae') {
+        stage('Packaging/Pushing image') {
             steps {
-                withDockerRegistry() {
-                    sh 'docker build . -t cuongmvc/trinh-clothes'
+                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+                    sh 'docker build -t cuongmvc/trinh-clothes .'
                     sh 'docker push cuongmvc/trinh-clothes'
                 }
             }
         }
 
-        stage('Deploy Spring Boot to DEV') {
+        stage('Deploy trinh-clothes to DEV') {
             steps {
                 echo 'Deploying and cleaning'
                 sh 'docker image pull cuongmvc/trinh-clothes'
