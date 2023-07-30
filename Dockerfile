@@ -27,7 +27,7 @@ RUN npm config rm proxy
 RUN npm config rm https-proxy
 
 # Expose the port on which your Node.js app is running (change this if needed)
-EXPOSE 5000
+EXPOSE 8000
 
 # Specify the command to run your Node.js app
 CMD ["node", "./dist/app.js"]

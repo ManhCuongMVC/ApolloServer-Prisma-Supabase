@@ -2,4 +2,4 @@
 
 docker build -t cuongmvc/trinh-clothes .
 
-docker run -d --name trinh-clothes-container -p 5000:5000 cuongmvc/trinh-clothes
+docker run -d --name trinh-clothes-container -p 8000:8000 cuongmvc/trinh-clothes
