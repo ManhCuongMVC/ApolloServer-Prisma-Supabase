@@ -32,7 +32,9 @@ COPY --from=builder /app/package.json ./
 COPY --from=builder /app/pnpm-lock.yaml ./
 
 # Install only production dependencies
-RUN npm config set registry http://registry.npmjs.org/
+# RUN npm config set registry http://registry.npmjs.org/
+
+RUN npm config get proxy
 
 RUN npm install --production
 
