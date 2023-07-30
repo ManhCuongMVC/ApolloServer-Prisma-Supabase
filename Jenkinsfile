@@ -18,7 +18,7 @@ pipeline {
                 sh 'docker container stop cuongmvc/trinh-clothes || echo "this container does not exist" '
                 sh 'docker network create dev || echo "this network exists"'
                 sh 'echo y | docker container prune '
-                sh 'docker container run -d --rm --name trinh-clothes-container -p 5000:5000 --network dev cuongmvc/trinh-clothes'
+                sh 'docker container run -d --rm --name trinh-clothes-container -p 8000:8000 --network dev cuongmvc/trinh-clothes'
             }
         }
     }
