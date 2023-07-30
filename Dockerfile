@@ -8,7 +8,7 @@ RUN npm install -g pnpm typescript
 WORKDIR /app
 
 # Copy package.json, package-lock.json, and pnpm-lock.yaml to the container
-COPY package.json ./
+COPY package*.json ./
 COPY pnpm-lock.yaml ./
 
 # Install app dependencies using pnpm
@@ -28,13 +28,14 @@ WORKDIR /app
 
 # Copy the compiled JavaScript files from the previous stage
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package.json ./
+COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/pnpm-lock.yaml ./
 
 # Install only production dependencies
 # RUN npm config set registry http://registry.npmjs.org/
-
 RUN npm config get proxy
+RUN npm config rm proxy
+RUN npm config rm https-proxy
 
 RUN npm install --production
 
