@@ -24,6 +24,8 @@
   <img alt="Github stars" src="https://img.shields.io/github/stars/ManhCuongMVC/trinh-clothes?color=56BEB8" />
 </p>
 
+  ![GitHub repo size](https://img.shields.io/github/repo-size/ManhCuongMVC/trinh-clothes?style=plastic) ![GitHub language count](https://img.shields.io/github/languages/count/ManhCuongMVC/trinh-clothes?style=plastic) ![GitHub top language](https://img.shields.io/github/languages/top/ManhCuongMVC/trinh-clothes?style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/ManhCuongMVC/trinh-clothes?color=red&style=plastic)
+
 <!-- Status -->
 
 <!-- <h4 align="center"> 
