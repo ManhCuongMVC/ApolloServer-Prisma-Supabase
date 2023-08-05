@@ -58,11 +58,9 @@ Describe your project
 
 The following tools were used in this project:
 
-- [Expo](https://expo.io/)
 - [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [Apollo/server](https://www.apollographql.com/docs/apollo-server/)
 
 ## :white_check_mark: Requirements ##
 
@@ -78,12 +76,13 @@ $ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/trinh-clothes
 $ cd trinh-clothes
 
 # Install dependencies
-$ yarn
+$ npm install -g pnpm
+$ pnpm install
 
 # Run the project
-$ yarn start
+$ pnpm dev
 
-# The server will initialize in the <http://localhost:3000>
+# The server will initialize in the <http://localhost:8000>
 ```
 
 ## :memo: License ##
