@@ -1,13 +1,18 @@
+import { PrismaClient } from "@prisma/client";
 import { products } from "./schema.graphql";
 
+const prisma = new PrismaClient()
 export const productResolver = {
   Query: {
-    products: () => products,
+    products: (_parent: any, { input }: any, contextValue: any, info: any) => {
+      return prisma.product.findMany();
+    },
   },
   Mutation: {
     createProduct: (_parent: any, { input }: any, contextValue: any, info: any) => {
-      products.push({ id: products.length + 1, ...input });
-      return products[products.length - 1];
+      return prisma.product.create({
+        data: input
+      });
     }
   }
 };

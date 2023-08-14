@@ -61,6 +61,7 @@ The following tools were used in this project:
 - [Node.js](https://nodejs.org/en/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Apollo/server](https://www.apollographql.com/docs/apollo-server/)
+- [Prisma](https://www.prisma.io/)
 
 ## :white_check_mark: Requirements ##
 
@@ -78,6 +79,9 @@ $ cd trinh-clothes
 # Install dependencies
 $ npm install -g pnpm
 $ pnpm install
+
+# Generate Prisma Client
+$ npx prisma generate
 
 # Run the project
 $ pnpm dev
