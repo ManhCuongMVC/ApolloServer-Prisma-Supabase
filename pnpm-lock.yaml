@@ -14,6 +14,9 @@ dependencies:
   apollo:
     specifier: ^2.34.0
     version: 2.34.0(typescript@5.1.6)
+  dotenv:
+    specifier: ^16.3.1
+    version: 16.3.1
   graphql:
     specifier: ^16.7.1
     version: 16.7.1
