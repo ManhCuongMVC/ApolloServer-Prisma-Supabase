@@ -1,4 +1,4 @@
-export const myPlugin = {
+const myPlugin = {
     async requestDidStart() {
         console.log("request did started");
 
@@ -33,3 +33,5 @@ export const myPlugin = {
         }
     }
 }
+
+export default myPlugin;

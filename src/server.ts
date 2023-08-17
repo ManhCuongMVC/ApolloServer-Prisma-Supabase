@@ -2,7 +2,7 @@ import { productGraphql } from "./modules/products/schema.graphql";
 import { productResolver } from "./modules/products/resolver";
 import { ApolloServer } from "@apollo/server";
 import { MyContext } from "./configs/context.config";
-import { myPlugin } from "./configs/plupin.config";
+import ApolloServerOperationRegistry from '@apollo/server-plugin-operation-registry';
 
 export const server = new ApolloServer<MyContext>({
   typeDefs: [
@@ -12,6 +12,12 @@ export const server = new ApolloServer<MyContext>({
     productResolver
   ],
   plugins: [
-    myPlugin
+    ApolloServerOperationRegistry({}),
+    require("./configs/plugin.config"),
+    {
+      async serverWillStart(service) {
+        console.log("Server starting up!")
+      },
+    }
   ]
 });
