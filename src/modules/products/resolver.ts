@@ -4,7 +4,7 @@ import { MyContext } from "../../configs/context.config";
 
 export const productResolver = {
   Query: {
-    products: (_parent: any, { input }: any, { db, env }: MyContext, info: any) => {
+    products: (_parent: any, { input }: any, { db }: MyContext, info: any) => {
       return db.product.findMany();
     },
   },

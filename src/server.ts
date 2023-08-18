@@ -18,10 +18,22 @@ export const server = new ApolloServer<MyContext>({
     productResolver
   ],
   plugins: [
+    /* Server error */
+    {
+      async unexpectedErrorProcessingRequest({ requestContext, error }) {
+        console.log(`Something went wrong ${error}`)
+      },
+    },
+  
+    /* Plugin Request lifecycle. */
     myPlugin,
+
+    /* Plugin landing page. */
     env.NODE_ENV === 'production'
     ? ApolloServerPluginLandingPageProductionDefault()
     : ApolloServerPluginLandingPageLocalDefault({ embed: false }),
+
+    /* Plugin server. */
     {
       async serverWillStart() {
         await db.$connect().then(() => console.log("🚀 DB connected"));
@@ -31,7 +43,7 @@ export const server = new ApolloServer<MyContext>({
           },
           async serverWillStop() {
             console.log("😵 Server will stopping!")
-            db.$disconnect().then(() => console.log("🖐️  DB disconnected!"));
+            await db.$disconnect().then(() => console.log("🖐️  DB disconnected!"));
           }
         }
       },

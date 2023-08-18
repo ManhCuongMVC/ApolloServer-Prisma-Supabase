@@ -1,10 +1,12 @@
+import { GraphQLRequestContext, GraphQLRequestListener } from "@apollo/server";
+import { MyContext } from "./context.config";
+
+// Request lifecycle events
 const myPlugin = {
-    async requestDidStart() {
-        console.log("request did started");
+    async requestDidStart( requestContext: GraphQLRequestContext<MyContext>): Promise<GraphQLRequestListener<MyContext>> {
 
         return {
-            async parsingDidStart(requestContext) {
-                console.log("Parsing started!");
+            async parsingDidStart() {
                 return async(err) => {
                     if (err) {
                         console.log("Parsing error: ", err);
@@ -12,8 +14,7 @@ const myPlugin = {
                 }
             },
 
-            async validationDidStart(requestContext) {
-                console.log("Validation started!");
+            async validationDidStart() {
                 return async(errs) => {
                     if (errs) {
                         errs.forEach(err => console.log("Validation error: ", err));
@@ -22,10 +23,15 @@ const myPlugin = {
             },
 
             async executionDidStart() {
-                console.log("Execution did start!");
                 return {
+                    willResolveField({ source, args, contextValue, info }){
+                        return (error, result) => {
+                            if (error) {
+                                console.log(`It failed with ${error}`);
+                              }
+                        }
+                    },
                     async executionDidEnd(err) {
-                        console.log("Execution did End!");
                         if (err) {
                             console.log("Execution did end error: ", err);
                         }

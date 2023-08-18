@@ -1,12 +1,12 @@
 import { BaseContext } from "@apollo/server";
-import { PrismaClient } from "@prisma/client";
 import db from "./db.config";
 import env from "./env.config"
+import logger from "./logger.config";
 
 export interface MyContext extends BaseContext {
   currentUser: any,
-  logger: any,
-  db: PrismaClient,
+  logger: typeof logger,
+  db: typeof db,
   env: any,
   redis: any
 }
@@ -14,7 +14,7 @@ export interface MyContext extends BaseContext {
 export const createContext = async ({ req, res }) => {
   return {
     currentUser: undefined,
-    logger: undefined,
+    logger,
     db,
     env,
     redis: undefined
