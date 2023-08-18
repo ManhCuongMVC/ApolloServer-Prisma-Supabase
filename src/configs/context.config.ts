@@ -1,7 +1,7 @@
 import { BaseContext } from "@apollo/server";
 import { PrismaClient } from "@prisma/client";
-import 'dotenv/config'
 import db from "./db.config";
+import env from "./env.config"
 
 export interface MyContext extends BaseContext {
   currentUser: any,
@@ -16,7 +16,7 @@ export const createContext = async ({ req, res }) => {
     currentUser: undefined,
     logger: undefined,
     db,
-    env: process.env,
+    env,
     redis: undefined
   }
 }

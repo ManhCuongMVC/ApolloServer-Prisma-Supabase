@@ -80,6 +80,9 @@ $ cd trinh-clothes
 $ npm install -g pnpm
 $ pnpm install
 
+# init .env file
+$ cp .env.example .env
+
 # Generate Prisma Client
 $ npx prisma generate
 

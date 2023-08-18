@@ -4,6 +4,11 @@ import { ApolloServer } from "@apollo/server";
 import { MyContext } from "./configs/context.config";
 import db from "./configs/db.config";
 import myPlugin from "./configs/plugin.config";
+import {
+  ApolloServerPluginLandingPageLocalDefault,
+  ApolloServerPluginLandingPageProductionDefault,
+} from '@apollo/server/plugin/landingPage/default';
+import env from "./configs/env.config";
 
 export const server = new ApolloServer<MyContext>({
   typeDefs: [
@@ -14,9 +19,12 @@ export const server = new ApolloServer<MyContext>({
   ],
   plugins: [
     myPlugin,
+    env.NODE_ENV === 'production'
+    ? ApolloServerPluginLandingPageProductionDefault()
+    : ApolloServerPluginLandingPageLocalDefault({ embed: false }),
     {
       async serverWillStart() {
-        console.log("🚀 Server starting up!")
+        await db.$connect().then(() => console.log("🚀 DB connected"));
         return {
           async drainServer() {
             console.log("\n🫠  Draining server!");
