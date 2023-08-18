@@ -22,8 +22,10 @@ const myPlugin = {
             },
 
             async executionDidStart() {
+                console.log("Execution did start!");
                 return {
                     async executionDidEnd(err) {
+                        console.log("Execution did End!");
                         if (err) {
                             console.log("Execution did end error: ", err);
                         }

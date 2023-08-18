@@ -6,5 +6,5 @@ startStandaloneServer(server, {
   context: async ({ req, res }) => createContext({ req, res }),
   listen: { port: 8000 },
 }).then((result) => {
-  console.log(`🚀  Server ready at: ${result.url}`);
+  console.log(`🎉 Server ready at: ${result.url}`);
 }).catch((error) => { console.error(error) });

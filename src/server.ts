@@ -2,7 +2,8 @@ import { productGraphql } from "./modules/products/schema.graphql";
 import { productResolver } from "./modules/products/resolver";
 import { ApolloServer } from "@apollo/server";
 import { MyContext } from "./configs/context.config";
-import ApolloServerOperationRegistry from '@apollo/server-plugin-operation-registry';
+import db from "./configs/db.config";
+import myPlugin from "./configs/plugin.config";
 
 export const server = new ApolloServer<MyContext>({
   typeDefs: [
@@ -12,11 +13,19 @@ export const server = new ApolloServer<MyContext>({
     productResolver
   ],
   plugins: [
-    ApolloServerOperationRegistry({}),
-    require("./configs/plugin.config"),
+    myPlugin,
     {
-      async serverWillStart(service) {
-        console.log("Server starting up!")
+      async serverWillStart() {
+        console.log("🚀 Server starting up!")
+        return {
+          async drainServer() {
+            console.log("\n🫠  Draining server!");
+          },
+          async serverWillStop() {
+            console.log("😵 Server will stopping!")
+            db.$disconnect().then(() => console.log("🖐️  DB disconnected!"));
+          }
+        }
       },
     }
   ]
