@@ -1,5 +1,5 @@
 # Stage 1: Build the TypeScript application
-FROM node:20-alpine AS builder
+FROM node:20-alpine
 
 # Install pnpm globally
 RUN npm install -g pnpm typescript
@@ -21,10 +21,6 @@ COPY . .
 RUN tsc
 
 # Install only production dependencies
-# RUN npm config set registry http://registry.npmjs.org/
-RUN npm config get proxy
-RUN npm config rm proxy
-RUN npm config rm https-proxy
 
 # Expose the port on which your Node.js app is running (change this if needed)
 EXPOSE 8000
