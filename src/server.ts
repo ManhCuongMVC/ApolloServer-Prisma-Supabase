@@ -9,6 +9,7 @@ import {
   ApolloServerPluginLandingPageProductionDefault,
 } from '@apollo/server/plugin/landingPage/default';
 import env from "./configs/env.config";
+import { ApolloServerErrorCode } from '@apollo/server/errors';
 
 export const server = new ApolloServer<MyContext>({
   typeDefs: [
@@ -18,6 +19,27 @@ export const server = new ApolloServer<MyContext>({
     productResolver
   ],
   status400ForVariableCoercionErrors: true,
+  /* By default, Apollo Server omits the stacktrace field if the NODE_ENV === ( production || test ) */
+  // includeStacktraceInErrorResponses: true, 
+  formatError(formattedError, error) {
+    if (
+      formattedError.extensions.code ===
+      ApolloServerErrorCode.GRAPHQL_VALIDATION_FAILED
+    ) {
+      return {
+        ...formattedError,
+        message: "Your query doesn't match the schema. Try double-checking it!",
+      }
+    }
+
+    if (
+      formattedError.message.startsWith("Database Error: ")
+    ) {
+      return { message: "Internal Server Error" }
+    }
+
+    return formattedError;
+  },
   plugins: [
     /* Server error */
     {
@@ -25,14 +47,14 @@ export const server = new ApolloServer<MyContext>({
         console.log(`Something went wrong ${error}`)
       },
     },
-  
+
     /* Plugin Request lifecycle. */
     myPlugin,
 
     /* Plugin landing page. */
     env.NODE_ENV === 'production'
-    ? ApolloServerPluginLandingPageProductionDefault()
-    : ApolloServerPluginLandingPageLocalDefault({ embed: false }),
+      ? ApolloServerPluginLandingPageProductionDefault()
+      : ApolloServerPluginLandingPageLocalDefault({ embed: false }),
 
     /* Plugin server. */
     {
