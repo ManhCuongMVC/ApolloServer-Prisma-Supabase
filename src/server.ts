@@ -23,7 +23,7 @@ export const server = new ApolloServer<MyContext>({
   // includeStacktraceInErrorResponses: true, 
   formatError(formattedError, error) {
     if (
-      formattedError.extensions.code ===
+      formattedError?.extensions?.code ===
       ApolloServerErrorCode.GRAPHQL_VALIDATION_FAILED
     ) {
       return {
@@ -38,6 +38,7 @@ export const server = new ApolloServer<MyContext>({
       return { message: "Internal Server Error" }
     }
 
+    console.log("😱 An error occurred: ", formattedError);
     return formattedError;
   },
   plugins: [
@@ -59,14 +60,14 @@ export const server = new ApolloServer<MyContext>({
     /* Plugin server. */
     {
       async serverWillStart() {
-        await db.$connect().then(() => console.log("🚀 DB connected"));
+        await db.$connect().then(() => console.log("🔗 DB connected"));
         return {
           async drainServer() {
             console.log("\n🫠  Draining server!");
           },
           async serverWillStop() {
-            console.log("😵 Server will stopping!")
-            await db.$disconnect().then(() => console.log("🖐️  DB disconnected!"));
+            console.log("🖐️  Server will stopping!")
+            await db.$disconnect().then(() => console.log("🛑 DB disconnected!"));
           }
         }
       },

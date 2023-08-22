@@ -11,7 +11,8 @@ export interface MyContext extends BaseContext {
   redis: any
 }
 
-export const createContext = async ({ req, res }) => {
+export const createContext = async (params: { req: any, res: any }) => {
+  console.log("🚀 requesting with variables: ", params.req.body.variables);
   return {
     currentUser: undefined,
     logger,

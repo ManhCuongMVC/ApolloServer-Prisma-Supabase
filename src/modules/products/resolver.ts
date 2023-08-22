@@ -1,5 +1,3 @@
-import { PrismaClient } from "@prisma/client";
-import { products } from "./schema.graphql";
 import { MyContext } from "../../configs/context.config";
 
 export const productResolver = {
