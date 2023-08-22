@@ -17,6 +17,7 @@ export const server = new ApolloServer<MyContext>({
   resolvers: [
     productResolver
   ],
+  status400ForVariableCoercionErrors: true,
   plugins: [
     /* Server error */
     {
