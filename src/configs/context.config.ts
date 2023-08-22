@@ -12,7 +12,7 @@ export interface MyContext extends BaseContext {
 }
 
 export const createContext = async (params: { req: any, res: any }) => {
-  console.log("🚀 requesting with variables: ", params.req.body.variables);
+  console.log(`🚀 ${params.req.body.operationName} with variables: `, params.req.body.variables);
   return {
     currentUser: undefined,
     logger,
