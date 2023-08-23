@@ -1,33 +1,33 @@
 <div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="Trinh Clothes" />
+  <img src="./.github/app.gif" alt="ApolloServer-Prisma-Supabase" />
 
   &#xa0;
 
   <!-- <a href="https://trinhclothes.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">Trinh Clothes</h1>
+<h1 align="center">ApolloServer-Prisma-Supabase</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/ManhCuongMVC/trinh-clothes?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/ManhCuongMVC/ApolloServer-Prisma-Supabase?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/ManhCuongMVC/trinh-clothes?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/ManhCuongMVC/ApolloServer-Prisma-Supabase?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/ManhCuongMVC/trinh-clothes?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/ManhCuongMVC/ApolloServer-Prisma-Supabase?color=56BEB8">
 
-  <!-- <img alt="License" src="https://img.shields.io/github/license/ManhCuongMVC/trinh-clothes?color=56BEB8"> -->
+  <!-- <img alt="License" src="https://img.shields.io/github/license/ManhCuongMVC/ApolloServer-Prisma-Supabase?color=56BEB8"> -->
 
-  <img alt="Github issues" src="https://img.shields.io/github/issues/ManhCuongMVC/trinh-clothes?color=56BEB8" />
+  <img alt="Github issues" src="https://img.shields.io/github/issues/ManhCuongMVC/ApolloServer-Prisma-Supabase?color=56BEB8" />
 
-  <img alt="Github forks" src="https://img.shields.io/github/forks/ManhCuongMVC/trinh-clothes?color=56BEB8" />
+  <img alt="Github forks" src="https://img.shields.io/github/forks/ManhCuongMVC/ApolloServer-Prisma-Supabase?color=56BEB8" />
 
-  <img alt="Github stars" src="https://img.shields.io/github/stars/ManhCuongMVC/trinh-clothes?color=56BEB8" />
+  <img alt="Github stars" src="https://img.shields.io/github/stars/ManhCuongMVC/ApolloServer-Prisma-Supabase?color=56BEB8" />
 </p>
 
 <!-- Status -->
 
 <!-- <h4 align="center"> 
-	🚧  Trinh Clothes 🚀 Under construction...  🚧
+	🚧  ApolloServer-Prisma-Supabase 🚀 Under construction...  🚧
 </h4> 
 
 <hr> -->
@@ -71,10 +71,10 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/ManhCuongMVC/trinh-clothes
+$ git clone https://github.com/ManhCuongMVC/ApolloServer-Prisma-Supabase
 
 # Access
-$ cd trinh-clothes
+$ cd ApolloServer-Prisma-Supabase
 
 # Install dependencies
 $ npm install -g pnpm
