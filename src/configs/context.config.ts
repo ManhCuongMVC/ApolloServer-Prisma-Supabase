@@ -1,15 +1,23 @@
 import { BaseContext } from "@apollo/server";
+import db from "./db.config";
+import env from "./env.config"
+import logger from "./logger.config";
 
 export interface MyContext extends BaseContext {
   currentUser: any,
-  logger: any,
-  db: any,
-  env: any
+  logger: typeof logger,
+  db: typeof db,
+  env: any,
+  redis: any
 }
 
-export const createContext = async () => ({
-  currentUser: undefined,
-  logger: undefined,
-  db: undefined,
-  env: undefined
-})
+export const createContext = async (params: { req: any, res: any }) => {
+  console.log(`🚀 ${params.req.body.operationName} with variables: `, params.req.body.variables);
+  return {
+    currentUser: undefined,
+    logger,
+    db,
+    env,
+    redis: undefined
+  }
+}

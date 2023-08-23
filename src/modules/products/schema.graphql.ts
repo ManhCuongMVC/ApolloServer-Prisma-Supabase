@@ -18,5 +18,3 @@ export const productGraphql = `#graphql
     createProduct(input: ProductCreateInput!): Product
   }
 `;
-
-export const products: object[] = [];

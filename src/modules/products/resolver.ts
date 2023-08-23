@@ -1,13 +1,16 @@
-import { products } from "./schema.graphql";
+import { MyContext } from "../../configs/context.config";
 
 export const productResolver = {
   Query: {
-    products: () => products,
+    products: (_parent: any, { input }: any, { db }: MyContext, info: any) => {
+      return db.product.findMany();
+    },
   },
   Mutation: {
-    createProduct: (_parent: any, { input }: any, contextValue: any, info: any) => {
-      products.push({ id: products.length + 1, ...input });
-      return products[products.length - 1];
+    createProduct: (_parent: any, { input }: any, { db }: MyContext, info: any) => {
+      return db.product.create({
+        data: input
+      });
     }
   }
 };
