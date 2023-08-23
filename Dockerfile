@@ -17,6 +17,9 @@ RUN pnpm install
 # Copy the rest of the application code to the container
 COPY . .
 
+# Generate Prisma Client
+RUN npx prisma generate
+
 # Compile TypeScript to JavaScript
 RUN tsc
 
