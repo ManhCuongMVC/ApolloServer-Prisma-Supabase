@@ -62,6 +62,8 @@ The following tools were used in this project:
 - [TypeScript](https://www.typescriptlang.org/)
 - [Apollo/server](https://www.apollographql.com/docs/apollo-server/)
 - [Prisma](https://www.prisma.io/)
+- [Docker](https://www.docker.com/)
+- [Supabase](https://supabase.com/)
 
 ## :white_check_mark: Requirements ##
 
